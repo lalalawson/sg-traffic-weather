@@ -1,3 +1,5 @@
+import { Row } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
 function WeatherCard(props) {
@@ -14,9 +16,14 @@ function WeatherCard(props) {
       <h2>Weather</h2>
       {selected > -1 && (
         <>
-          <span>{locations[selected].name}</span>
           <span>{locations[selected].weather}</span>
         </>
+      )}
+      {selected < 0 && (
+        <Row align="middle">
+          <ExclamationCircleOutlined />
+          <span style={{ marginLeft: "4px" }}>No location selected yet.</span>
+        </Row>
       )}
     </div>
   );

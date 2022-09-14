@@ -1,4 +1,5 @@
-import { Row } from "antd";
+import { Empty, Row } from "antd";
+import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
 function TrafficCard(props) {
@@ -15,7 +16,6 @@ function TrafficCard(props) {
       <h2>Traffic Images</h2>
       {selected > -1 && (
         <>
-          <span>{locations[selected].name}</span>
           <Row
             align="center"
             justify="space-around"
@@ -27,8 +27,19 @@ function TrafficCard(props) {
                 <img key={camera.camera_id} src={camera.image} height="200px" />
               );
             })}
+            {locations[selected].cameras.length === 0 && (
+              <Empty
+                description={`No nearby traffic images found at ${locations[selected].name}`}
+              />
+            )}
           </Row>
         </>
+      )}
+      {selected < 0 && (
+        <Row align="middle">
+          <ExclamationCircleOutlined />
+          <span style={{ marginLeft: "4px" }}>No location selected yet.</span>
+        </Row>
       )}
     </div>
   );
