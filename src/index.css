@@ -14,3 +14,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+:root {
+  /* BORDER RADIUS */
+  --br-round: 9999px;
+  --br-lg: 15px;
+  --br-md: 10px;
+  --br-sm: 5px;
+
+  /* SHADOW */
+  --shadow-md: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  --shadow: 0px 10px 20px rgba(3, 17, 38, 0.05);
+  --transition: 200ms ease-out;
+}
+
+.card {
+  border: 1px solid lightblue;
+  border-radius: var(--br-md);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  padding: 16px;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}

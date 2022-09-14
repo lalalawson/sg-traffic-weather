@@ -1,8 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { Col, DatePicker } from "antd";
 import Navbar from "./components/Navbar";
 import DateTimeRow from "./components/DateTimeRow";
+import LocationCard from "./components/LocationCard";
 
 function App() {
   return (
@@ -11,6 +10,7 @@ function App() {
       <div className="App">
         <div className="App-body">
           <DateTimeRow />
+          <LocationCard />
         </div>
       </div>
     </>
