@@ -4,20 +4,22 @@ import weather from "./weather";
 const retrieveWeatherData = weather;
 const retrieveTrafficData = traffic;
 
-const aggregator = () => {
-  Promise.all([retrieveWeatherData, retrieveTrafficData]).then((data) => {
-    var weatherData = data[0];
-    var trafficData = data[1];
+let retrieveTrafficAndLocation = new Promise((resolve, reject) => {
+  Promise.all([retrieveWeatherData, retrieveTrafficData])
+    .then((data) => {
+      var weatherData = data[0];
+      var trafficData = data[1];
 
-    var finalData = {
-      weatherLastUpdate: weatherData.lastUpdate,
-      trafficLastUpdate: trafficData.lastUpdate,
-      locations: assignCameras(trafficData.cameras, weatherData.weather),
-    };
+      var finalData = {
+        weatherLastUpdate: weatherData.lastUpdate,
+        trafficLastUpdate: trafficData.lastUpdate,
+        locations: assignCameras(trafficData.cameras, weatherData.weather),
+      };
 
-    return finalData;
-  });
-};
+      resolve(finalData);
+    })
+    .catch((err) => reject(err));
+});
 
 const distanceBetween = (x1, y1, x2, y2) => {
   var a = x1 - x2;
@@ -58,4 +60,4 @@ const assignCameras = (cameraList, weatherLocList) => {
   return finalList;
 };
 
-export default aggregator;
+export default retrieveTrafficAndLocation;
