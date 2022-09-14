@@ -7,11 +7,13 @@ import retrieveTrafficAndLocation from "./services/aggregator";
 
 function App() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const retrieveData = async () => {
     await retrieveTrafficAndLocation.then((res) => {
       setData(res);
       console.log(res);
+      setIsLoading(false);
     });
   };
   useEffect(() => {
@@ -23,7 +25,7 @@ function App() {
       <div className="App">
         <div className="App-body">
           <DateTimeRow />
-          <LocationCard data={data} />
+          {!isLoading && <LocationCard data={data} />}
         </div>
       </div>
     </>
