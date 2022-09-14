@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import retrieveTrafficAndLocation from "./services/aggregator";
 import WeatherCard from "./components/WeatherCard";
 import { Col, Row, Space } from "antd";
+import TrafficCard from "./components/TrafficCard";
 
 function App() {
   const [data, setData] = useState([]);
@@ -38,6 +39,7 @@ function App() {
                   <WeatherCard data={data} selection={selected} />
                 </Col>
               </Row>
+              <TrafficCard data={data} selection={selected} />
             </>
           )}
         </div>
