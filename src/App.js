@@ -31,7 +31,7 @@ function App() {
           <DateTimeRow />
           {isLoading && <Spin size="large" />}
           {!isLoading && (
-            <>
+            <div style={{ width: "100%" }}>
               <Row gutter={[16, 16]} style={{ padding: "0px 24px" }}>
                 <Col xs={24} sm={12} md={12}>
                   <LocationCard data={data} updateSelection={setSelected} />
@@ -40,8 +40,15 @@ function App() {
                   <WeatherCard data={data} selection={selected} />
                 </Col>
               </Row>
-              <TrafficCard data={data} selection={selected} />
-            </>
+              <Row
+                gutter={[16, 16]}
+                style={{ padding: "0px 24px", marginTop: "16px" }}
+              >
+                <Col span={24}>
+                  <TrafficCard data={data} selection={selected} />
+                </Col>
+              </Row>
+            </div>
           )}
         </div>
       </div>

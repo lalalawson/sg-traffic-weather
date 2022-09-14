@@ -1,7 +1,7 @@
 /* wrap max width to cater for UltraWide */
 .App {
   display: flex;
-  max-width: 1920px;
+  max-width: 900px;
   flex-direction: column;
   margin: auto;
 }

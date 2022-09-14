@@ -15,7 +15,7 @@ function DateTimeRow() {
     <Row
       align="middle"
       justify="space-between"
-      style={{ maxWidth: "800px", width: "80%" }}
+      style={{ width: "100%", padding: "0px 16px" }}
       gutter={[24]}
     >
       <Col span={12}>

@@ -16,9 +16,16 @@ function TrafficCard(props) {
       {selected > -1 && (
         <>
           <span>{locations[selected].name}</span>
-          <Row>
+          <Row
+            align="center"
+            justify="space-around"
+            gutter={[16, 16]}
+            style={{ padding: "24px" }}
+          >
             {locations[selected].cameras.map((camera) => {
-              return <img key={camera.camera_id} src={camera.image} />;
+              return (
+                <img key={camera.camera_id} src={camera.image} height="200px" />
+              );
             })}
           </Row>
         </>
