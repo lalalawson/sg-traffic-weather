@@ -5,7 +5,7 @@ import LocationCard from "./components/LocationCard";
 import { useEffect, useState } from "react";
 import retrieveTrafficAndLocation from "./services/aggregator";
 import WeatherCard from "./components/WeatherCard";
-import { Col, Row, Space } from "antd";
+import { Col, Row, Space, Spin } from "antd";
 import TrafficCard from "./components/TrafficCard";
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
       <div className="App">
         <div className="App-body">
           <DateTimeRow />
+          {isLoading && <Spin size="large" />}
           {!isLoading && (
             <>
               <Row gutter={[16, 16]} style={{ padding: "0px 24px" }}>
