@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# SG Traffic & Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project provides a platform for users to view the current weather location and nearby traffic cameras (if any), based on the date and time selected.
+
+## Tech Stack
+
+The project is built with:
+
+- ReactJS
+- Ant Design
+
+Deployed on:
+
+- Heroku [(See project here)]
 
 ## Available Scripts
 
