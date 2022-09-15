@@ -2,10 +2,8 @@ import axios from "axios";
 import { weatherApi } from "../constants/api";
 
 const retrieveWeather = async (timestamp) => {
-  console.log("retrieving weather");
-  console.log(timestamp);
   return await axios
-    .get(`${weatherApi}`)
+    .get(`${weatherApi}?date_time=${timestamp}`)
     .then((res) => {
       var location = res.data.area_metadata;
       var forecasts = res.data.items[0].forecasts;

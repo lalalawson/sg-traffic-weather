@@ -3,7 +3,7 @@ import { trafficApi } from "../constants/api";
 
 const retrieveTraffic = async (timestamp) => {
   return await axios
-    .get(`${trafficApi}`)
+    .get(`${trafficApi}?date_time=${timestamp}`)
     .then((res) => {
       // return cameras info together with last update time
       const trafficInfo = {

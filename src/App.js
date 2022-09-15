@@ -14,6 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [selected, setSelected] = useState(-1);
   const [timestamp, setTimestamp] = useState(moment());
+  const [isDtSelected, setIsDtSelected] = useState(true);
 
   const retrieveData = async (timestamp) => {
     await retrieveTrafficAndLocation(timestamp).then((res) => {
@@ -23,7 +24,11 @@ function App() {
     });
   };
   useEffect(() => {
-    retrieveData(timestamp);
+    if (timestamp !== "") {
+      retrieveData(timestamp);
+    } else {
+      setIsDtSelected(false);
+    }
   }, [timestamp]);
   console.log(timestamp);
   return (
