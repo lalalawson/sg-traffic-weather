@@ -1,6 +1,5 @@
 // to convert moment datetime to correct string format for api
 function convertToString(date, time) {
-  console.log("date");
   var dateStr =
     date.year() +
     "-" +
@@ -14,7 +13,6 @@ function convertToString(date, time) {
     padZero(time.minutes()) +
     ":" +
     padZero(time.seconds());
-  console.log(dateStr + timeStr);
   return dateStr + timeStr;
 }
 

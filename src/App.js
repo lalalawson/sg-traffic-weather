@@ -19,7 +19,6 @@ function App() {
   const retrieveData = async (timestamp) => {
     await retrieveTrafficAndLocation(timestamp).then((res) => {
       setData(res);
-      console.log(res);
       setIsLoading(false);
     });
   };
@@ -31,9 +30,7 @@ function App() {
       setIsDtSelected(false);
       setSelected(-1);
     }
-    console.log(isDtSelected);
   }, [timestamp, isDtSelected]);
-  console.log(timestamp);
   return (
     <>
       <Navbar />
