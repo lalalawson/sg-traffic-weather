@@ -7,7 +7,6 @@ import retrieveTrafficAndLocation from "./services/aggregator";
 import WeatherCard from "./components/WeatherCard";
 import { Col, Row, Space, Spin } from "antd";
 import TrafficCard from "./components/TrafficCard";
-import moment from "moment";
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,12 +15,15 @@ function App() {
   const [timestamp, setTimestamp] = useState("");
   const [isDtSelected, setIsDtSelected] = useState(true);
 
+  // retrieve all information
   const retrieveData = async (timestamp) => {
     await retrieveTrafficAndLocation(timestamp).then((res) => {
       setData(res);
       setIsLoading(false);
     });
   };
+
+  // reloads the application based on date and time selection
   useEffect(() => {
     if (timestamp !== "") {
       retrieveData(timestamp);
@@ -30,7 +32,7 @@ function App() {
       setIsDtSelected(false);
       setSelected(-1);
     }
-  }, [timestamp, isDtSelected]);
+  }, [timestamp]);
   return (
     <>
       <Navbar />
