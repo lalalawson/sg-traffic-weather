@@ -41,3 +41,8 @@ code {
 .card:hover {
   box-shadow: var(--shadow-md);
 }
+
+.datetimestr {
+  font-size: 12px;
+  color: gray;
+}

@@ -1,6 +1,7 @@
 import { Row } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
+import { formatDate } from "../services/dateTimeConvert";
 
 function WeatherCard(props) {
   const [selected, setSelected] = useState(-1);
@@ -16,6 +17,9 @@ function WeatherCard(props) {
       <h2>Weather</h2>
       {selected > -1 && (
         <>
+          <div className="datetimestr" style={{ marginTop: "-8px" }}>
+            Last updated on {formatDate(lastUpdate)}
+          </div>
           <span>{locations[selected].weather}</span>
         </>
       )}

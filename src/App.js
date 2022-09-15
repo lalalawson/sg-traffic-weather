@@ -13,7 +13,7 @@ function App() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selected, setSelected] = useState(-1);
-  const [timestamp, setTimestamp] = useState(moment());
+  const [timestamp, setTimestamp] = useState("");
   const [isDtSelected, setIsDtSelected] = useState(true);
 
   const retrieveData = async (timestamp) => {
@@ -26,10 +26,13 @@ function App() {
   useEffect(() => {
     if (timestamp !== "") {
       retrieveData(timestamp);
+      setIsDtSelected(true);
     } else {
       setIsDtSelected(false);
+      setSelected(-1);
     }
-  }, [timestamp]);
+    console.log(isDtSelected);
+  }, [timestamp, isDtSelected]);
   console.log(timestamp);
   return (
     <>
@@ -42,7 +45,11 @@ function App() {
             <div style={{ width: "100%" }}>
               <Row gutter={[16, 16]} style={{ padding: "0px 24px" }}>
                 <Col xs={24} sm={12} md={12}>
-                  <LocationCard data={data} updateSelection={setSelected} />
+                  <LocationCard
+                    data={data}
+                    updateSelection={setSelected}
+                    isDtSelected={isDtSelected}
+                  />
                 </Col>
                 <Col xs={24} sm={12} md={12}>
                   <WeatherCard data={data} selection={selected} />

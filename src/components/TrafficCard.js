@@ -1,6 +1,7 @@
 import { Empty, Row, Image } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
+import { formatDate } from "../services/dateTimeConvert";
 
 function TrafficCard(props) {
   const [selected, setSelected] = useState(-1);
@@ -16,6 +17,9 @@ function TrafficCard(props) {
       <h2>Traffic Images</h2>
       {selected > -1 && (
         <>
+          <div className="datetimestr" style={{ marginTop: "-8px" }}>
+            Last updated on {formatDate(lastUpdate)}
+          </div>
           <Row
             align="center"
             justify="space-around"

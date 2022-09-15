@@ -1,12 +1,10 @@
-import moment from "moment";
-
 // to convert moment datetime to correct string format for api
 function convertToString(date, time) {
   console.log("date");
   var dateStr =
     date.year() +
     "-" +
-    padZero(date.month()) +
+    padZero(date.month() + 1) +
     "-" +
     padZero(date.date()) +
     "T";
@@ -28,4 +26,13 @@ function padZero(num) {
   }
 }
 
-export default convertToString;
+// convert the DT String to something more readable
+function formatDate(datetime) {
+  var year = datetime.slice(0, 4);
+  var month = datetime.slice(5, 7);
+  var day = datetime.slice(8, 10);
+  var time = datetime.slice(11, 19);
+  return day + "/" + month + "/" + year + " " + time;
+}
+
+export { convertToString, formatDate };
