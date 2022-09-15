@@ -1,8 +1,8 @@
 import axios from "axios";
 import { trafficApi } from "../constants/api";
 
-let traffic = new Promise(async (resolve, reject) => {
-  await axios
+const retrieveTraffic = async () => {
+  return await axios
     .get(`${trafficApi}`)
     .then((res) => {
       // return cameras info together with last update time
@@ -11,13 +11,11 @@ let traffic = new Promise(async (resolve, reject) => {
         cameras: res.data.items[0].cameras,
       };
 
-      resolve(trafficInfo);
+      return trafficInfo;
     })
     .catch((err) => {
-      if (err.response) {
-        reject(err.response.data);
-      }
+      return err;
     });
-});
+};
 
-export default traffic;
+export default retrieveTraffic();

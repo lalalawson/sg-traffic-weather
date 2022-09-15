@@ -1,8 +1,8 @@
 import axios from "axios";
 import { weatherApi } from "../constants/api";
 
-let weather = new Promise(async (resolve, reject) => {
-  await axios
+const retrieveWeather = async () => {
+  return await axios
     .get(`${weatherApi}`)
     .then((res) => {
       var location = res.data.area_metadata;
@@ -25,13 +25,11 @@ let weather = new Promise(async (resolve, reject) => {
         lastUpdate: res.data.items[0].update_timestamp,
         weather: location_weather,
       };
-      resolve(weatherInfo);
+      return weatherInfo;
     })
     .catch((err) => {
-      if (err.response) {
-        reject(err.response.data);
-      }
+      return err;
     });
-});
+};
 
-export default weather;
+export default retrieveWeather();

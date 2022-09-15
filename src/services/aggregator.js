@@ -1,11 +1,8 @@
-import traffic from "./traffic";
-import weather from "./weather";
+import retrieveTraffic from "./traffic";
+import retrieveWeather from "./weather";
 
-const retrieveWeatherData = weather;
-const retrieveTrafficData = traffic;
-
-let retrieveTrafficAndLocation = new Promise((resolve, reject) => {
-  Promise.all([retrieveWeatherData, retrieveTrafficData])
+const retrieveTrafficAndLocation = async () => {
+  return Promise.all([retrieveWeather, retrieveTraffic])
     .then((data) => {
       var weatherData = data[0];
       var trafficData = data[1];
@@ -16,10 +13,12 @@ let retrieveTrafficAndLocation = new Promise((resolve, reject) => {
         locations: assignCameras(trafficData.cameras, weatherData.weather),
       };
 
-      resolve(finalData);
+      return finalData;
     })
-    .catch((err) => reject(err));
-});
+    .catch((err) => {
+      return err;
+    });
+};
 
 const distanceBetween = (x1, y1, x2, y2) => {
   var a = x1 - x2;
@@ -60,4 +59,4 @@ const assignCameras = (cameraList, weatherLocList) => {
   return finalList;
 };
 
-export default retrieveTrafficAndLocation;
+export default retrieveTrafficAndLocation();
