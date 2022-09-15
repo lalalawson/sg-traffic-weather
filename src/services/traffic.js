@@ -1,7 +1,7 @@
 import axios from "axios";
 import { trafficApi } from "../constants/api";
 
-const retrieveTraffic = async () => {
+const retrieveTraffic = async (timestamp) => {
   return await axios
     .get(`${trafficApi}`)
     .then((res) => {
@@ -18,4 +18,4 @@ const retrieveTraffic = async () => {
     });
 };
 
-export default retrieveTraffic();
+export default retrieveTraffic;

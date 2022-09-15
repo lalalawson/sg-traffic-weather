@@ -1,8 +1,8 @@
 import retrieveTraffic from "./traffic";
 import retrieveWeather from "./weather";
 
-const retrieveTrafficAndLocation = async () => {
-  return Promise.all([retrieveWeather, retrieveTraffic])
+const retrieveTrafficAndLocation = async (timestamp) => {
+  return Promise.all([retrieveWeather(timestamp), retrieveTraffic(timestamp)])
     .then((data) => {
       var weatherData = data[0];
       var trafficData = data[1];
@@ -59,4 +59,4 @@ const assignCameras = (cameraList, weatherLocList) => {
   return finalList;
 };
 
-export default retrieveTrafficAndLocation();
+export default retrieveTrafficAndLocation;

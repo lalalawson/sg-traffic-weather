@@ -1,7 +1,9 @@
 import axios from "axios";
 import { weatherApi } from "../constants/api";
 
-const retrieveWeather = async () => {
+const retrieveWeather = async (timestamp) => {
+  console.log("retrieving weather");
+  console.log(timestamp);
   return await axios
     .get(`${weatherApi}`)
     .then((res) => {
@@ -32,4 +34,4 @@ const retrieveWeather = async () => {
     });
 };
 
-export default retrieveWeather();
+export default retrieveWeather;

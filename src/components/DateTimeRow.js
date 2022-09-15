@@ -1,14 +1,18 @@
 import { Col, DatePicker, Row, TimePicker } from "antd";
 import moment from "moment";
 import { useEffect, useState } from "react";
+import convertToString from "../services/dateTimeConvert";
 
-function DateTimeRow() {
+function DateTimeRow(props) {
   const [date, setDate] = useState(moment());
   const [time, setTime] = useState(moment());
 
   useEffect(() => {
-    console.log(date);
-    console.log(time);
+    if (date && time) {
+      props.changeTimestamp(convertToString(date, time));
+    } else {
+      props.changeTimestamp("");
+    }
   }, [date, time]);
 
   return (
@@ -31,8 +35,6 @@ function DateTimeRow() {
         <div style={{ marginBottom: "4px" }}>Time</div>
         <TimePicker
           style={{ width: "100%" }}
-          use12Hours
-          format="h:mm a"
           defaultValue={time}
           onChange={setTime}
         />
