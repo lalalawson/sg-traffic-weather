@@ -1,4 +1,4 @@
-import { Empty, Row } from "antd";
+import { Empty, Row, Image } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
@@ -24,7 +24,12 @@ function TrafficCard(props) {
           >
             {locations[selected].cameras.map((camera) => {
               return (
-                <img key={camera.camera_id} src={camera.image} height="200px" />
+                <Image
+                  key={camera.camera_id}
+                  src={camera.image}
+                  width="350px"
+                  style={{ borderRadius: "var(--br-md)" }}
+                />
               );
             })}
             {locations[selected].cameras.length === 0 && (
